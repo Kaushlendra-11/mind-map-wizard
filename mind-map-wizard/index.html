@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Map Wizard - Problem Solving Made Visual</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wizard-container">
+        <!-- Progress Indicator -->
+        <div class="progress-container">
+            <div class="progress-steps">
+                <div class="step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-label">Problem</span>
+                </div>
+                <div class="step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-label">Framework</span>
+                </div>
+                <div class="step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-label">Generate</span>
+                </div>
+                <div class="step" data-step="4">
+                    <span class="step-number">4</span>
+                    <span class="step-label">Develop</span>
+                </div>
+                <div class="step" data-step="5">
+                    <span class="step-number">5</span>
+                    <span class="step-label">Export</span>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 20%"></div>
+            </div>
+        </div>
+
+        <!-- Step 1: Problem Definition -->
+        <div class="wizard-step active" id="step-1">
+            <div class="step-content">
+                <h1>Define Your Problem</h1>
+                <p class="step-description">Start by clearly describing the problem or challenge you want to explore. A well-defined problem is the foundation of effective mind mapping.</p>
+                
+                <div class="form-group">
+                    <label for="problem-input" class="form-label">What problem would you like to solve?</label>
+                    <textarea id="problem-input" class="form-control" rows="4" placeholder="Describe your problem, challenge, or question here..."></textarea>
+                </div>
+
+                <div class="help-section">
+                    <h3>Mind Mapping Principles</h3>
+                    <ul class="principles-list">
+                        <li>Start with a central idea or problem in the center</li>
+                        <li>Use branches to connect related ideas and concepts</li>
+                        <li>Keep branch labels concise (1-3 words ideal)</li>
+                        <li>Use colors to categorize and differentiate themes</li>
+                        <li>Build hierarchically from general to specific concepts</li>
+                    </ul>
+                </div>
+
+                <div class="examples-section">
+                    <h3>Example Problem Statements</h3>
+                    <div class="example-cards">
+                        <div class="example-card" data-example="How can we improve team communication in our remote work environment?">
+                            <h4>Team Communication</h4>
+                            <p>How can we improve team communication in our remote work environment?</p>
+                        </div>
+                        <div class="example-card" data-example="What's causing our website's low conversion rate?">
+                            <h4>Website Performance</h4>
+                            <p>What's causing our website's low conversion rate?</p>
+                        </div>
+                        <div class="example-card" data-example="How should we approach launching our new product in a competitive market?">
+                            <h4>Product Launch</h4>
+                            <p>How should we approach launching our new product in a competitive market?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Framework Selection -->
+        <div class="wizard-step" id="step-2">
+            <div class="step-content">
+                <h1>Choose Your Framework</h1>
+                <p class="step-description">Select a problem-solving framework that best fits your situation. Each framework provides a different lens through which to analyze your problem.</p>
+                
+                <div class="frameworks-grid" id="frameworks-grid">
+                    <!-- Framework cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Mind Map Generation -->
+        <div class="wizard-step" id="step-3">
+            <div class="step-content">
+                <h1>Mind Map Structure</h1>
+                <p class="step-description">Your mind map has been generated based on the selected framework. The structure is ready for you to customize.</p>
+                
+                <div class="mind-map-container">
+                    <div class="mind-map-controls">
+                        <button class="btn btn--sm btn--outline" id="zoom-in">Zoom In</button>
+                        <button class="btn btn--sm btn--outline" id="zoom-out">Zoom Out</button>
+                        <button class="btn btn--sm btn--outline" id="reset-zoom">Reset</button>
+                    </div>
+                    <div class="mind-map-canvas" id="mind-map-canvas">
+                        <svg id="mind-map-svg" width="100%" height="500">
+                            <!-- Mind map will be rendered here -->
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: Content Development -->
+        <div class="wizard-step" id="step-4">
+            <div class="step-content">
+                <h1>Develop Your Content</h1>
+                <p class="step-description">Click on any node to edit its content. Use the suggestions panel for inspiration and ideas.</p>
+                
+                <div class="content-development">
+                    <div class="mind-map-editor">
+                        <div class="mind-map-controls">
+                            <button class="btn btn--sm btn--outline" id="add-node">Add Node</button>
+                            <button class="btn btn--sm btn--outline" id="delete-node" disabled>Delete Node</button>
+                            <button class="btn btn--sm btn--outline" id="zoom-in-2">Zoom In</button>
+                            <button class="btn btn--sm btn--outline" id="zoom-out-2">Zoom Out</button>
+                        </div>
+                        <div class="mind-map-canvas" id="mind-map-canvas-2">
+                            <svg id="mind-map-svg-2" width="100%" height="400">
+                                <!-- Editable mind map will be rendered here -->
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="suggestions-panel">
+                        <h3>Suggestions</h3>
+                        <div id="suggestions-content">
+                            <p>Click on a node to see relevant suggestions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5: Review and Export -->
+        <div class="wizard-step" id="step-5">
+            <div class="step-content">
+                <h1>Review & Export</h1>
+                <p class="step-description">Your mind map is complete! Review the final result and choose how you'd like to export or save it.</p>
+                
+                <div class="final-mind-map">
+                    <div class="mind-map-canvas" id="final-mind-map-canvas">
+                        <svg id="final-mind-map-svg" width="100%" height="500">
+                            <!-- Final mind map will be rendered here -->
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="export-options">
+                    <h3>Export Options</h3>
+                    <div class="export-buttons">
+                        <button class="btn btn--primary" id="export-png">Download as PNG</button>
+                        <button class="btn btn--secondary" id="export-json">Export JSON Data</button>
+                        <button class="btn btn--secondary" id="save-local">Save to Browser</button>
+                        <button class="btn btn--outline" id="print-view">Print View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="wizard-navigation">
+            <button class="btn btn--outline" id="prev-btn" disabled>Previous</button>
+            <button class="btn btn--primary" id="next-btn">Next</button>
+        </div>
+    </div>
+
+    <!-- Edit Node Modal -->
+    <div class="modal hidden" id="edit-node-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Node</h3>
+                <button class="modal-close" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="node-text" class="form-label">Node Text</label>
+                    <input type="text" id="node-text" class="form-control" placeholder="Enter node text">
+                </div>
+                <div class="form-group">
+                    <label for="node-color" class="form-label">Node Color</label>
+                    <select id="node-color" class="form-control">
+                        <option value="#FF6B6B">Red</option>
+                        <option value="#4ECDC4">Teal</option>
+                        <option value="#45B7D1">Blue</option>
+                        <option value="#96CEB4">Green</option>
+                        <option value="#FFEAA7">Yellow</option>
+                        <option value="#DDA0DD">Purple</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--outline" id="cancel-edit">Cancel</button>
+                <button class="btn btn--primary" id="save-edit">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
